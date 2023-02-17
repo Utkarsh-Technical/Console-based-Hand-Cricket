@@ -3,116 +3,85 @@ package handCricket;
 import java.util.*;
 
 class TeamIndia {
+	
 	String name;
 	String role;
+	
 	// If batsmans, then how much Runs
 	int score = 0;
-	// If bowler, then how much wickets
-	int wickets = 0;
+	
 	// Out or Not-Out
 	int status = 0;
 	
+	//Balls Player Played
+	int balls= 0;
+	
+	// Parameterized Constructor
 	public TeamIndia(String name, String role) {
 		// TODO Auto-generated constructor stub
 		this.name = name;
 		this.role = role;
 	}
 
+	// Default Constructors
 	public TeamIndia() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	// Getting the details
+	// Storing the names of the Player
 	String getName() {
 		return name;
 	}
+	
+	// Role of Player : Caption, Batsman, Bowler
 	String getRole() {
 		return role;
 	}
+	
+	// Individual Players Score
 	int getScore() {
 		return score;
 	}
-	int getWickets() {
-		return wickets;
+	
+	// How many balls played by player
+	int getBalls() {
+		return balls;
 	}
 	
-}
-
-class Player {
-	String name;
-	String role;
-	int runs = 0;
-	int wickets = 0;
-	// Out or Not-Out
-	int status = 0;
+	// Status of Player : Not-Out & Out
+	String currentStatus() {
+		if(status == 0)
+			return "NOT OUT";
+		return "OUT";
+	}
 	
 	// Add runs for the player
-	public void addRun(int run) {
-		
+	public void setScores(int run) {
+		this.score = run;
+	}
+	//Change the Status to OUT	
+	public void changeStatus(){
+		status = 1;
 	}
 	
-	// Add wickets for the player
-	public void addWicket(int run) {
-	
-	}
-	
-	// Current Status of the Cricket
-	public void currentStatus() {
-		System.out.println();
-	}
-	
-	public Player(String name, String role) {
-		this.name = name;
-		this.role = role;
-	}
-	public Player() {
+	//Store the Balls that Player played.
+	public void setBalls(int balls) {
+		this.balls = balls;
 	}
 }
 
 public class handCricket {
-	
+
 	//Team A Registration
 	public static void teamIndiaRegistation(TeamIndia teamIndia_Details[]) {
 		teamIndia_Details[0] = new TeamIndia ("Rohit Sharma","Captain");
-		teamIndia_Details[1] = new TeamIndia ("KL Rahul","Vice-Captain");
-		teamIndia_Details[2] = new TeamIndia ("Virat Kohli","Batsman");
-		teamIndia_Details[3] = new TeamIndia ("Suryakumar Yadav","Batsman");
-		teamIndia_Details[4] = new TeamIndia ("Rishabh Pant","Wicket Keeper");
-		teamIndia_Details[5] = new TeamIndia ("Hardik Pandya","All Rounder");
-		teamIndia_Details[6] = new TeamIndia ("R. Ashwin","Bowler");
-		teamIndia_Details[7] = new TeamIndia ("Yuzvendra Chahal","Bowler");
-		teamIndia_Details[8] = new TeamIndia ("Mohammad Siraj","Bowler");
-		teamIndia_Details[9] = new TeamIndia ("Arshdeep Singh","Bowler");
+		teamIndia_Details[1] = new TeamIndia ("Virat Kohli","Batsman");
+		teamIndia_Details[2] = new TeamIndia ("Suryakumar","Batsman");
+		teamIndia_Details[3] = new TeamIndia ("R. Ashwin","Bowler");
+		teamIndia_Details[4] = new TeamIndia ("Arshdeep Singh","Bowler");
 	}
 	
-	// Team B Registration
-	public static void teamBRegistation(TeamIndia teamB_Details[]) {
-		Scanner sc= new Scanner(System.in);
-		for(int i=0; i<10; i++) {
-			System.out.println("Enter the Player Name :");
-			String name = sc.next();
-			System.out.println("1.Captain  2.Vice-Captain  3.Batsman  4.Wicket Keeper  5.All Rounder  6.Bowler");
-			int val = sc.nextInt();
-			String status;
-			
-			if(val == 1)
-				status = "Captain";
-			else if(val == 2)
-				status = "Vice-Captain";
-			else if(val == 3)
-				status = "Batsman";
-			else if(val == 4)
-				status = "Wicket Keeper";
-			else if(val == 5)
-				status = "All Rounder";
-			else
-				status = "Bowler";
-			
-			teamB_Details[i] = new TeamIndia (name,status);
-		}
-		sc.close();
-	}
-	
+	// Checking for the Toss Won
 	public static boolean isWonToss(char ch) {
 		String chars = "HTHHTTHHT";
 		Random rnd = new Random();
@@ -123,53 +92,182 @@ public class handCricket {
 		return false;
 	}
 	
+	// Display the Name of the Player in the Starting of Match
 	public static void display(TeamIndia[] teamA_Details, TeamIndia[] teamB_Details, String teamA, String teamB) {
-		System.out.println("\t\t"+teamA+" ||\t\t"+teamB);
-		System.out.println("====================||$||====================");
-		for(int i=0; i<10; i++) {
-			System.out.println("\t\t"+teamA_Details[i].getName()+
-					" ||\t\t"+teamB_Details[i].getName());
+		System.out.println("\t"+teamA+"\t\t"+teamB);
+		System.out.println("====================================================");
+		for(int i=0; i<5; i++) {
+			System.out.println("\t"+teamA_Details[i].getName()+
+					"\t\t"+teamB_Details[i].getName());
 		}
 	}
 	
-	public static void instruction() {
-		// Over 
+	// Scoreboard of the Team
+	public static int scoreboard(TeamIndia[] teamD, String team) {
+		System.out.println("\t"+team);
+		System.out.println("==============================================================");
+		System.out.println("Name\t\tRole\t\tScores\t\tStatus\t\tBalls");
+		int teamScore = 0;
+		for(int i=0; i<5; i++) {
+			System.out.println(teamD[i].getName()+ "\t\t" + teamD[i].getRole() + "\t\t" + teamD[i].getScore() 
+					+ "\t\t" +teamD[i].currentStatus()+"\t\t"+teamD[i].getBalls());
+			teamScore += teamD[i].getScore();
+		}
+		return teamScore;
 	}
 	
-	public static void main(String[] args) {
+	// Instructions for the Game
+	public static void instruction() {
+		System.out.println("Hand Cricket is a game in which two players show scores on their respective \n"
+				+ "fingers. If the scores are equal, the batsman is declared out. Else, the score of the\n"
+				+ " batsman is added to the total runs of the batting team.");
+		System.out.println("Entry the Runs from 0 to 6");
+		System.out.println("==============================================================");
+		System.out.println("==============================================================");
+	}
+	
+	// Main Game 
+	public static void calculateRuns(int balls, TeamIndia[] teamBatting) {
+		Scanner sc = new Scanner(System.in);
+		int runs = 0;
+		int player = 0;
+		int ballsPlayed = 0;
+		System.out.println(teamBatting[player].getName()+ " is going Bat");
+		for(int i=1; i<=balls && player<teamBatting.length ;) {
+			int batting = sc.nextInt();
+			if(batting >= 0 && batting <= 6) {
+				int bowling = (int)Math.random()*6 + 1;
+				System.out.println(batting+" : "+bowling);
+				ballsPlayed++;
+				if(bowling == batting) {
+					System.out.println(teamBatting[player].getName() + " is OUT");
+					teamBatting[player].setBalls(ballsPlayed); 
+					teamBatting[player].setScores(runs);
+					teamBatting[player].changeStatus();
+					player++;
+					runs=0; ballsPlayed=0;
+					System.out.println(teamBatting[player].getName()+ " is going next to Bat");
+				}
+				else {
+					runs += batting;
+				}
+				i++;
+			}
+			else {
+				System.out.println("Invalid Input: Plz enter the value from 0 to 6");
+			}
+				
+		}
+		System.out.println("---Inning Finished---");
+		teamBatting[player].setBalls(ballsPlayed); 
+		teamBatting[player].setScores(runs);
+		return ;
+	}
+	
+	
+	
+	public static void main(String[] args) throws Exception{
 		Scanner sc= new Scanner(System.in); 
+		instruction();
 		System.out.println("Getting Ready to Play...");
-		System.out.println("====================================================");
+		System.out.println("==============================================================");
 		
-		// Team Names
+		// Team Name
 		String teamA_Name = "Team India";
 		System.out.println("Enter your Team Name:");
 		String teamB_Name= "Team " +sc.next();
-		
 		System.out.println(teamA_Name +"  VS  "+teamB_Name);
-		// Team A Registration
-		TeamIndia teamA_Details[] = new TeamIndia[10];
-		teamIndiaRegistation(teamA_Details);
-	
-		// Team B Registration
-		TeamIndia teamB_Details[] = new TeamIndia[10];
-		teamBRegistation(teamB_Details);
 		
-		// Games Inputs
+		// Team A Registration
+		TeamIndia teamA_Details[] = new TeamIndia[5];
+		teamIndiaRegistation(teamA_Details);
+		
+		// Team B Registration
+		TeamIndia teamB_Details[] = new TeamIndia[5];
+		for(int i=0; i<5; i++) {
+			System.out.println("Enter the Player Name :");
+			String name = sc.next();
+			System.out.println("1.Captain  2.Batsman  3.Bowler");
+			int val = sc.nextInt();
+			String status = null;
+			
+			if(val == 1)
+				status = "Captain";
+			else if(val == 2)
+				status = "Batsman";
+			else 
+				status = "Bowler";
+			
+			teamB_Details[i] = new TeamIndia(name,status);
+		}
+		
+		// Display the teams Name
+		display(teamA_Details, teamB_Details, teamA_Name, teamB_Name);
+		
+		// Games Inputs : Overs
 		System.out.println("Enter the No of Overs you wanted to play");
-		int over = sc.nextInt();
+		int overs = sc.nextInt();
+		int balls = overs*6;
+		
 		// Toss : Heads or Tails
 		System.out.println("Enter your Toss:(H/T)");
 		char ch = sc.next().charAt(0);
 		ch = Character.toUpperCase(ch);
+		
+		// Check the TOSS 
 		if(isWonToss(ch)) {
-			System.out.println("Congrats! You won the Toss");
-		}else {
-			System.out.println( teamA_Name+" won the Toss");
+			System.out.println("Congrats! You won the Toss\n1. Batting\t2. Bowling");
+			int choice = sc.nextInt();
+			if(choice == 1) {
+				calculateRuns(balls,teamB_Details);
+				// Score of the Team
+				int teamB = scoreboard(teamB_Details, teamB_Name);
+				calculateRuns(balls,teamA_Details);
+				// Score of the Team
+				int teamA = scoreboard(teamA_Details, teamA_Name);
+				
+				if(teamA > teamB)
+					System.out.println(teamA_Name + " won the match by "+ (teamA-teamB)+" Runs");
+				else if(teamA < teamB)
+					System.out.println(teamB_Name + " won the match by " + (teamB-teamA)+" Runs");
+				else
+					System.out.println("Match is Tie");
+			} else {
+				calculateRuns(balls,teamA_Details);
+				// Score of the Team
+				int teamA = scoreboard(teamA_Details, teamA_Name);
+				calculateRuns(balls,teamB_Details);
+				// Score of the Team
+				int teamB = scoreboard(teamB_Details, teamB_Name);
+				
+				if(teamA > teamB)
+					System.out.println(teamA_Name + " won the match by "+ (teamA-teamB)+" Runs");
+				else if(teamA < teamB)
+					System.out.println(teamB_Name + " won the match by " + (teamB-teamA)+" Runs");
+				else
+					System.out.println("Match is Tie");
+			}
+		}
+		else {
+			System.out.println(teamA_Name+" won the Toss\n Choose the Batting..");
+			calculateRuns(balls,teamA_Details);
+			// Score of the Team
+			int teamA = scoreboard(teamA_Details, teamA_Name);
+			calculateRuns(balls,teamB_Details);
+			// Score of the Team
+			int teamB = scoreboard(teamB_Details, teamB_Name);
+			
+			if(teamA > teamB)
+				System.out.println(teamA_Name + " won the match by "+ (teamA-teamB)+" Runs");
+			else if(teamA < teamB)
+				System.out.println(teamB_Name + " won the match by " + (teamB-teamA)+" Runs");
+			else
+				System.out.println("Match is Tie");
 		}
 		sc.close();
 		
-		// Display the team Status
-		display(teamA_Details, teamB_Details,teamA_Name,teamB_Name);
+		
+		
+		
 	}
 }
