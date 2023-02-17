@@ -156,14 +156,12 @@ public class handCricket {
 			else {
 				System.out.println("Invalid Input: Plz enter the value from 0 to 6");
 			}
-				
 		}
 		System.out.println("---Inning Finished---");
 		teamBatting[player].setBalls(ballsPlayed); 
 		teamBatting[player].setScores(runs);
 		return ;
 	}
-	
 	
 	
 	public static void main(String[] args) throws Exception{
