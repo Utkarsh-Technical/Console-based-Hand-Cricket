@@ -1,6 +1,7 @@
 package handCricket;
 
 import java.util.*;
+import java.util.concurrent.*;
 
 class TeamIndia {
 	
@@ -136,7 +137,8 @@ public class handCricket {
 		for(int i=1; i<=balls && player<teamBatting.length ;) {
 			int batting = sc.nextInt();
 			if(batting >= 0 && batting <= 6) {
-				int bowling = (int)Math.random()*6 + 1;
+				ThreadLocalRandom random = ThreadLocalRandom.current();
+				int bowling = random.nextInt(1, 7);
 				System.out.println(batting+" : "+bowling);
 				ballsPlayed++;
 				if(bowling == batting) {
@@ -145,6 +147,9 @@ public class handCricket {
 					teamBatting[player].setScores(runs);
 					teamBatting[player].changeStatus();
 					player++;
+					if(player == 6) {
+						break;
+					}
 					runs=0; ballsPlayed=0;
 					System.out.println(teamBatting[player].getName()+ " is going next to Bat");
 				}

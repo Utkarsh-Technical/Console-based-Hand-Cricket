@@ -18,4 +18,4 @@
 <br>
 
 ## Structure of Code
-<img align="centre" alt="GIF"  src="image\structure.png" />
+<img align="centre" alt="GIF"  src="structure.png" />
