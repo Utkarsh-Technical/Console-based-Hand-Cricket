@@ -38,4 +38,4 @@ java HandCricket
 - The console-based interface makes the game accessible to players who do not have access to a graphical user interface.
 
 ## Structure of Code
-<img align="centre" alt="GIF"  src="structure.png" />
+<img align="centre" alt="GIF"  src="image/structure.png" />
