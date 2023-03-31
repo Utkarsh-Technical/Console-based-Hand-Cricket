@@ -1,4 +1,4 @@
-# <div align="center"> Hand Cricket</div>
+# Hand Cricket
 
 This is a simple Hand-Cricket Game that was built using <strong>Java, OOPs concepts, and Data Structures</strong>. 
 The game is based on the popular cricket game that is played in India and other cricket-loving countries.
