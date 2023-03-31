@@ -1,5 +1,4 @@
 # <div align="center"> <h1> Hand Cricket</h1></div>
-<img align="left" src="image/cricket-fever-i-love-cricket.gif" height="150px"> 
 
 This is a simple Hand-Cricket Game that was built using <strong>Java, OOPs concepts, and Data Structures</strong>. 
 The game is based on the popular cricket game that is played in India and other cricket-loving countries.
