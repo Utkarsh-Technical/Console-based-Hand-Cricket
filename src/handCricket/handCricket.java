@@ -126,7 +126,7 @@ public class handCricket {
 	}
 	
 	// Instructions for the Game
-	public static void instruction() {
+	static {
 		System.out.println("Hand Cricket is a game in which two players show scores on their respective \n"
 				+ "fingers. If the scores are equal, the batsman is declared out. Else, the score of the\n"
 				+ " batsman is added to the total runs of the batting team.");
@@ -214,7 +214,7 @@ public class handCricket {
 	
 	public static void main(String[] args) throws Exception{
 		Scanner sc= new Scanner(System.in); 
-		instruction();
+	
 		System.out.println("Getting Ready to Play...");
 		System.out.println("=============================================");
 		
